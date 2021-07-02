@@ -1,14 +1,18 @@
 server:
   port: 8000
   servlet:
-    context-path: /blog
     encoding:
       charset: UTF-8
       enabled: true
       force: true
 
-
 spring:
+  mustache:
+    charset: UTF-8
+    content-type: text/html; charset=utf-8
+    prefix: classpath:/templates/
+    suffix: .html
+    expose-session-attributes: true
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
