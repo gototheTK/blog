@@ -1,0 +1,57 @@
+{{#isLoggedIn}}
+<script>
+    alert("로그인이 된 사용자 입니다.");
+</script>
+{{/isLoggedIn}}
+{{^isLoggedIn}}
+<script>
+    alert("로그인이 안된 사용자 입니다.");
+</script>
+{{/isLoggedIn}}
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/">Blog</a>
+
+    
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <p>{{principal}}</p>
+            
+        {{#principal}}
+        <li class="nav-item">
+            <a class="nav-link" href="/writeForm">글쓰기</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/userForm">회원정보</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">로그아웃</a>
+        </li>
+        
+        {{/principal}}
+        {{^principal}}
+        <li class="nav-item">
+            <a class="nav-link" href="/loginForm">로그인</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/joinForm">회원가입</a>
+        </li>
+        {{/principal}}
+
+
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Dropdown link
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<br>
