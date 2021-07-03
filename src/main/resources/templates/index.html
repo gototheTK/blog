@@ -1,76 +1,73 @@
-<!DOCTYPE html>
+{{>layout/header}} {{#boards}}
+<div class="container">
+  <div class="card m-2">
+    <div class="card-body">
+      <h4 class="card-title">{{title}}</h4>
+      <h5 class="card-subtitle">{{user.username}}</h5>
+      {{{content}}}
+      <hr />
+      <a href="/board/{{id}}" class="btn btn-primary" >상세보기</a>
+    </div>
+  </div>
+</div>
+
+{{/boards}}
+
+<ul id="pages" class="pagination justify-content-center">
+  {{^boards.first}}
+  <li class="page-item">
+    <a class="page-link" href="?page={{previous}}">Previous</a>
+  </li>
+  {{/boards.first}}
 
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- <script>
+    const totalPage = Number("{{totalPage}}");
+    const currentPage = Number("{{currentPage}}");
+    const pages = document.getElementById("pages");
+    const count = 5;
+    const half = parseInt((count)/2);
+    const isEven = count%2==0 ? true : false;
+
+    let start;
+    let end;
+
+    if(currentPage-half<0 || currentPage+half>=totalPage){
+    start = currentPage-half<0 ? 0 : totalPage-count;
+    end = currentPage+half>=totalPage ? totalPage:count;
+    }else {
+      start = currentPage - half;
+      end = isEven ? currentPage + half : currentPage + half+1;
+    }
+
+    console.log(start);
+    console.log(end);
 
     
-</head>
+    for(let i=start; i<end; i++){
+      const page = document.createElement('li');
+      
+      if(currentPage===i){
+        page.className =  'page-item disabled';
+      }else {
+        page.className = 'page-item';
+      }
+      page.innerHTML = `<a class="page-link" href="?page=${i}">${i+1}</a>`;
+      pages.append(page);
+    }
+  </script> -->
 
-<body>
+  {{#pages}}
+  {{{.}}}
+  {{/pages}}
+
+
+  {{^boards.last}} 
+  <li class="page-item"></li>
+  <a class="page-link" href="?page={{next}}">Next</a>
+  </li>
+  {{/boards.last}}
   
- 
-  {{>layout/header}}
+</ul>
 
-  <div class="container">
-    <div class="card m-2">
-      <div class="card-body">
-        <h4 class="card-title">제목적는부분</h4>
-        <p class="card-text">내용 적는 부분</p>
-        <a href="#" class="btn btn-primary">상세보기</a>
-      </div>
-    </div>
-
-    <div class="card m-2">
-      <div class="card-body">
-        <h4 class="card-title">제목적는부분</h4>
-        <p class="card-text">내용 적는 부분</p>
-        <a href="#" class="btn btn-primary">상세보기</a>
-      </div>
-    </div>
-
-    <div class="card m-2">
-      <div class="card-body">
-        <h4 class="card-title">제목적는부분</h4>
-        <p class="card-text">내용 적는 부분</p>
-        <a href="#" class="btn btn-primary">상세보기</a>
-      </div>
-    </div>
-
-    <div class="card m-2">
-      <div class="card-body">
-        <h4 class="card-title">제목적는부분</h4>
-        <p class="card-text">내용 적는 부분</p>
-        <a href="#" class="btn btn-primary">상세보기</a>
-      </div>
-    </div>
-
-    <div class="card m-2">
-      <div class="card-body">
-        <h4 class="card-title">제목적는부분</h4>
-        <p class="card-text">내용 적는 부분</p>
-        <a href="#" class="btn btn-primary">상세보기</a>
-      </div>
-    </div>
-
-    <div class="card m-2">
-      <div class="card-body">
-        <h4 class="card-title">제목적는부분</h4>
-        <p class="card-text">내용 적는 부분</p>
-        <a href="#" class="btn btn-primary">상세보기</a>
-      </div>
-    </div>
-
-  </div>
-  {{>layout/footer}}
-  
-
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{{>layout/footer}}

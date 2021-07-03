@@ -1,15 +1,5 @@
 let index = {
   init: function () {
-    const login = document.getElementById("btn-login");
-
-    if (login != null) {
-      login.addEventListener("click", () => {
-        let temp = new request("login");
-        console.log(temp);
-        temp.post();
-      });
-    }
-
     const join = document.getElementById("btn-join");
     if (join != null) {
       join.addEventListener("click", () => {
@@ -34,18 +24,17 @@ class request {
       this.data.email = document.getElementById("email").value;
     }
 
-    this.url = "/api/" + url;
+    this.url = "/auth/" + url;
     console.log("호출했습니다." + this.url);
   }
 
   post() {
-
     //회원가입 수행 요청 (100초 가정)
     fetch(this.url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "charset": "utf-8",
+        charset: "utf-8",
       }, //body데이터가 어떤 타입인지
       dataType: "json", // 요청을 서버로해서 응답이 왔을 때 기본적으로 모든 것이 문자열(생긴게 json이라면) => javascript오브젝트로 변경
       body: JSON.stringify(this.data),
@@ -65,5 +54,5 @@ class request {
       });
   }
 
-  put() { }
+  put() {}
 }

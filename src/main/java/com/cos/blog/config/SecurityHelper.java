@@ -1,10 +1,10 @@
 package com.cos.blog.config;
 
-import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
 
 import com.cos.blog.model.RoleType;
 
@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContext;
 public class SecurityHelper {
 
     private Collection<? extends GrantedAuthority> authorities = Collections.emptyList();
+
 
     private Authentication authentication;
 

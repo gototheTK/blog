@@ -14,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 
@@ -40,6 +41,10 @@ public class Board {
     @Lob//대용량 데이터
     private String content; // 섬머노트 라이브러리 <html>태그가 섞여서 디자인됨.
     
+
+    private int count; //조회수
+
+
     @ManyToOne(fetch=FetchType.EAGER) // Many = Many, user = One
     @JoinColumn(name="userId")
     private User user; // DB는 오브젝트를 저장할수 없다. FK, 자바는 오브젝트를 저장할 수있다.

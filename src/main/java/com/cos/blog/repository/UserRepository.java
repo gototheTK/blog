@@ -1,5 +1,7 @@
 package com.cos.blog.repository;
 
+import java.util.Optional;
+
 import com.cos.blog.model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,14 +11,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 // @Repository // 생략 가능하다.
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+    // Select * from user where username = 1?
+    Optional<User> findByUsername(String username);
+
+
     // JPA Naming 쿼리
     // SELECT * FROM user WHERE username = ? AND password = ?
-    User findByUsernameAndPassword(String username, String password);
+    // User findByUsernameAndPassword(String username, String password);
 
     // @Query(value = "SELECT * FROM user WHERE username = ? AND password = ?",
     // nativeQuery = true)
     // User login(String username, String password);
 
-    User findByUsername(String username);
+    
 
 }

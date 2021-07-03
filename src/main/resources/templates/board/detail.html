@@ -1,0 +1,24 @@
+{{>layout/header}}
+
+<div id="container" class="container">
+  <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+  {{#writer}}
+  <a href="/board/{{board.id}}/updateForm" class="btn btn-warning">수정</a>
+  <button id="btn-delete" class="btn btn-danger">삭제</button>{{/writer}}
+
+  <br /><br />
+  <div>글 번호 : <span id="id">{{board.id}}</span></div>
+  <div>작성자 : <span id="writer">{{board.user.username}}</span></div>
+  <div class="form-group">
+    <h3>제목 : {{board.title}}</h3>
+  </div>
+  <hr />
+  <div class="form-group">
+    <div>내용 : {{{board.content}}}</div>
+  </div>
+  <hr />
+</div>
+
+<script src="/js/board.js"></script>
+
+{{>layout/footer}}
